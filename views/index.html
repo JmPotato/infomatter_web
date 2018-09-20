@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 <% include header.html %>
 <body>
-    <h1>Hello, Infomatter!</h1>
+    <div id="layout" class="content pure-g">
+        <div id="nav" class="pure-u">
+            <a href="#" class="nav-menu-button">菜单</a>
+            <div class="nav-inner">
+                <div class="pure-menu">
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">未读 <span class="rss-count">(2)</span></a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">星标</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">订阅</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">用户</a></li>
+                        <li class="pure-menu-heading">分类</li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="rss-label"></span>科技</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="rss-label"></span>生活</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="rss-label"></span>娱乐</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="list" class="pure-u-1">
+            <% entries.forEach(item => { %>
+            <div class="rss-item pure-g">
+                <div class="pure-u-3-4">
+                    <h5 class="rss-name"><%= item.source_name %></h5>
+                    <h4 class="rss-title"><%= item.title %></h4>
+                    <p class="rss-desc">
+                        <%= item.title %>
+                    </p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
 </body>
