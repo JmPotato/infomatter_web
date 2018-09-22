@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<% include header.html %>
+<title>Infomatter | 登录</title>
+<body class="signin">
+    <div class="signin_form">
+        <h1>登录</h1>
+        <form class="pure-form pure-form-aligned" action="/user/signin" method="POST">
+            <fieldset>
+                <div class="pure-control-group">
+                    <input name="name" type="text" placeholder="用户名">
+                </div>
+                <div class="pure-control-group">
+                    <input name="password" type="password" placeholder="密码">
+                </div>
+                <button type="submit" class="pure-button pure-button-primary">登录</button>
+            </fieldset>
+        </form>
+    </div>
+</body>
