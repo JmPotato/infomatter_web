@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <% include header.html %>
-<title>Infomatter | 首页</title>
+<title>Infomatter | 订阅</title>
 <body>
     <div id="layout" class="content pure-g">
         <% include menu.html %>
         <div id="list" class="pure-u-1">
-            <% entries.forEach(item => { %>
             <div class="rss-item pure-g">
                 <div class="pure-u-3-4">
-                    <h5 class="rss-name"><%= item.source_name %></h5>
-                    <h4 class="rss-title"><%= item.title %></h4>
+                    <h5 class="rss-name">内容数：42</h5>
+                    <h4 class="rss-title">科技</h4>
                     <p class="rss-desc">
-                        <%= item.title %>
+                        科技新闻
                     </p>
+                </div>
+                <div class="pure-u-1-4">
+                    <button class="secondary-button pure-button">></button>
+                </div>
+            </div>
+        </div>
+        <div class="pure-u-1">
+            <% all_sources.forEach(item => { %>
+            <div class="rss-item pure-g">
+                <div class="pure-u-3-4">
+                    <h5 class="rss-name"><%= item.id %></h5>
+                    <h4 class="rss-title"><%= item.name %></h4>
+                    <p class="rss-desc">
+                        <%= item.link %>
+                    </p>
+                </div>
+                <div class="pure-u-1-4">
+                    <button class="secondary-button pure-button">关注</button>
                 </div>
             </div>
             <% }) %>
-        </div>
-        <div class="pure-u-1">
-            <div class="rss-content">
-                <div class="rss-content-header pure-g">
-                    <div class="pure-u-1-2">
-                        <h1 class="rss-content-title">RSS 标题</h1>
-                        <p class="rss-content-subtitle">
-                            来自：<a>订阅源</a>&nbsp;时间：<span>3:56pm, April 3, 2012</span>
-                        </p>
-                    </div>
-                    <div class="rss-content-controls pure-u-1-2">
-                        <button class="secondary-button pure-button">收藏</button>
-                    </div>
-                </div>
-                <div class="rss-content-body">
-                </div>
-            </div>
         </div>
     </div>
     <script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>

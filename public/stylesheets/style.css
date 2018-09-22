@@ -2,13 +2,27 @@
  * -- BASE STYLES --
  * Most of these are inherited from Base, but I want to change a few.
  */
- body {
+body {
     color: #333;
 }
 
 a {
     text-decoration: none;
     color: #1b98f8;
+}
+
+.signin {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+.signin_form {
+    margin: auto;
 }
 
 /*
@@ -178,7 +192,6 @@ a {
         height: 40px;
     }
 
-
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some
@@ -256,18 +269,4 @@ a {
         margin: 0;
         padding: 0;
     }
-}
-
-.signin {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #f5f5f5;
-    text-align: center;
-}
-.signin_form {
-    margin: auto;
 }

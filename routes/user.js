@@ -49,4 +49,11 @@ app.get('/signout', function(req, res) {
     res.redirect('/user/signin');
 });
 
+app.get('/subscriptions', function(req, res) {
+    request.get(api_url + '/sources', function(error, response, body) {
+        var all_sources = JSON.parse(body);
+        res.render('subscriptions', {all_sources});
+    });
+});
+
 module.exports = app;
