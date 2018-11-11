@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <% include header.html %>
 <title>Infomatter | 登录</title>
-<body class="signin">
-    <div class="signin_form">
-        <h1>登录</h1>
-        <form class="pure-form pure-form-aligned" action="/user/signin" method="POST">
-            <fieldset>
-                <div class="pure-control-group">
-                    <input name="name" type="text" placeholder="用户名">
-                </div>
-                <div class="pure-control-group">
-                    <input name="password" type="password" placeholder="密码">
-                </div>
-                <button type="submit" class="pure-button pure-button-primary">登录</button>
-            </fieldset>
-        </form>
+<body>
+    <div id="wrapper" class="yue">
+        <header id="header">
+            <a href="/" id="site_name">Infomatter</a>
+        </header>
+        <div class="post">
+            <article>
+                <form action="/user/signin" method="POST" id="login">
+                    <div class="input">
+                        <label for="name">用户名</label><input id="name" name="name" type="text" style="width:50%;">
+                    </div>
+                    <div class="input">
+                        <label for="password">密码</label><input id="password" name="password" type="password" style="width:50%;">
+                    </div>
+                    <div id="submit">
+                        <button type="submit">登录</button>
+                    </div>
+                </form>
+            </article>
+        </div>
     </div>
 </body>

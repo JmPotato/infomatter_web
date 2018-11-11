@@ -2,49 +2,22 @@
 <% include header.html %>
 <title>Infomatter | 订阅</title>
 <body>
-    <div id="layout" class="content pure-g">
-        <% include menu.html %>
-        <div id="list" class="pure-u-1">
-            <div class="rss-item pure-g">
-                <div class="pure-u-3-4">
-                    <h5 class="rss-name">内容数：42</h5>
-                    <h4 class="rss-title">科技</h4>
-                    <p class="rss-desc">
-                        科技新闻
-                    </p>
-                </div>
-                <div class="pure-u-1-4">
-                    <button class="secondary-button pure-button">></button>
-                </div>
-            </div>
-        </div>
-        <div class="pure-u-1">
-            <% all_sources.forEach(item => { %>
-            <div class="rss-item pure-g">
-                <div class="pure-u-3-4">
-                    <h5 class="rss-name"><%= item.id %></h5>
-                    <h4 class="rss-title"><%= item.name %></h4>
-                    <p class="rss-desc">
-                        <%= item.link %>
-                    </p>
-                </div>
-                <div class="pure-u-1-4">
-                    <button class="secondary-button pure-button">关注</button>
-                </div>
-            </div>
-            <% }) %>
+    <div id="wrapper" class="yue">
+        <header id="header">
+            <a href="/" id="site_name">Infomatter</a>
+            <nav>
+                <a href="/user/subscriptions">订阅</a>
+                <a href="/user/signout">注销</a>
+            </nav>
+        </header>
+        <div id="content">
+            <ol id="posts">
+                <% all_sources.forEach(item => { %>
+                    <li>
+                        <% if(item.following) { %><span>+</span><% } else { %><span>-</span><% } %> <a href="<%= item.link %>" target="_blank"><%= item.name %></a>
+                    </li>
+                <% }) %>
+            </ol>
         </div>
     </div>
-    <script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
-    <script>
-        YUI().use('node-base', 'node-event-delegate', function (Y) {
-            var menuButton = Y.one('.nav-menu-button'),
-                nav        = Y.one('#nav');
-            // Setting the active class name expands the menu vertically on small screens.
-            menuButton.on('click', function (e) {
-                nav.toggleClass('active');
-            });
-
-        });
-    </script>
 </body>

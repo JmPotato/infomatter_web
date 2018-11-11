@@ -52,7 +52,19 @@ app.get('/signout', function(req, res) {
 app.get('/subscriptions', function(req, res) {
     request.get(api_url + '/sources', function(error, response, body) {
         var all_sources = JSON.parse(body);
-        res.render('subscriptions', {all_sources});
+        request.get({url: api_url + '/users/following', headers: {'user_id': JSON.parse(req.cookies.user).id}}, function(error, response, body) {
+            var user_sources = JSON.parse(body);
+            all_sources.forEach(all => {
+                user_sources.forEach(user => {
+                    if(all.id === user.id) {
+                        all.following = 1;
+                    } else {
+                        all.following = 0;
+                    }
+                });
+            });
+            res.render('subscriptions', {all_sources});
+        });
     });
 });
 

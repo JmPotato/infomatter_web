@@ -2,49 +2,28 @@
 <% include header.html %>
 <title>Infomatter | 首页</title>
 <body>
-    <div id="layout" class="content pure-g">
-        <% include menu.html %>
-        <div id="list" class="pure-u-1">
-            <% entries.forEach(item => { %>
-            <div class="rss-item pure-g">
-                <div class="pure-u-3-4">
-                    <h5 class="rss-name"><%= item.source_name %></h5>
-                    <h4 class="rss-title"><%= item.title %></h4>
-                    <p class="rss-desc">
-                        <%= item.title %>
-                    </p>
-                </div>
-            </div>
-            <% }) %>
+    <div id="wrapper" class="yue">
+        <header id="header">
+            <a href="/" id="site_name">Infomatter</a>
+            <nav>
+                <a href="/user/subscriptions">订阅</a>
+                <a href="/user/signout">注销</a>
+            </nav>
+        </header>
+        <div id="content">
+            <ol id="posts">
+                <% entries.forEach(item => { %>
+                    <li>
+                        <span class="date"><%= item.time.substring(0,10) %></span> <a href="<%= item.link %>" target="_blank"><%= item.title %></a>
+                    </li>
+                <% }) %>
+            </ol>
         </div>
-        <div class="pure-u-1">
-            <div class="rss-content">
-                <div class="rss-content-header pure-g">
-                    <div class="pure-u-1-2">
-                        <h1 class="rss-content-title">RSS 标题</h1>
-                        <p class="rss-content-subtitle">
-                            来自：<a>订阅源</a>&nbsp;时间：<span>3:56pm, April 3, 2012</span>
-                        </p>
-                    </div>
-                    <div class="rss-content-controls pure-u-1-2">
-                        <button class="secondary-button pure-button">收藏</button>
-                    </div>
-                </div>
-                <div class="rss-content-body">
-                </div>
-            </div>
-        </div>
+        <footer id="footer">
+            Powered by <a href="https://github.com/infomatter/infomatter_web">Informatter</a>
+            &
+            Theme <a href="https://github.com/JmPotato/Potheme-Clean">Clean</a> by <a href="https://github.com/whtsky">whtsky</a> and modified by <a href="https://ipotato.me">JmPotato</a>
+        </footer>
     </div>
-    <script src="https://yui-s.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
-    <script>
-        YUI().use('node-base', 'node-event-delegate', function (Y) {
-            var menuButton = Y.one('.nav-menu-button'),
-                nav        = Y.one('#nav');
-            // Setting the active class name expands the menu vertically on small screens.
-            menuButton.on('click', function (e) {
-                nav.toggleClass('active');
-            });
-
-        });
-    </script>
 </body>
+</html>
