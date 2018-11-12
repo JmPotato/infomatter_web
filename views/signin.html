@@ -5,21 +5,28 @@
     <div id="wrapper" class="yue">
         <header id="header">
             <a href="/" id="site_name">Infomatter</a>
+            <nav>
+                <a href="/user/signup">注册</a>
+            </nav>
         </header>
-        <div class="post">
-            <article>
-                <form action="/user/signin" method="POST" id="login">
-                    <div class="input">
-                        <label for="name">用户名</label><input id="name" name="name" type="text" style="width:50%;">
-                    </div>
-                    <div class="input">
-                        <label for="password">密码</label><input id="password" name="password" type="password" style="width:50%;">
-                    </div>
-                    <div id="submit">
-                        <button type="submit">登录</button>
-                    </div>
-                </form>
-            </article>
+        <div id="content">
+            <div class="post">
+                <h1 id="title">登录</h1>
+                <article>
+                    <form action="/user/signin" method="POST" id="signin">
+                        <div class="input">
+                            <input id="name" name="name" type="text" placeholder="用户名" style="width:50%;">
+                        </div>
+                        <div class="input">
+                            <input id="password" name="password" type="password" placeholder="密码" style="width:50%;">
+                        </div>
+                        <div id="submit">
+                            <button type="submit">登录</button>
+                        </div>
+                    </form>
+                </article>
+            </div>
         </div>
+        <% include footer.html %>
     </div>
 </body>
