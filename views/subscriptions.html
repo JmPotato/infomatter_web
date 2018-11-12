@@ -14,7 +14,7 @@
             <ol id="posts">
                 <% all_sources.forEach(item => { %>
                     <li>
-                        <% if(item.following) { %><span>+</span><% } else { %><span>-</span><% } %> <a href="<%= item.link %>" target="_blank"><%= item.name %></a>
+                        <% if(item.following) { %><span><a href="/user/unfollow/<%= item.id %>">-</a></span><% } else { %><span><a href="/user/follow/<%= item.id %>">+</a></span><% } %> <a href="<%= item.link %>" target="_blank"><%= item.name %></a>
                     </li>
                 <% }) %>
             </ol>

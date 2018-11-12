@@ -50,21 +50,53 @@ app.get('/signout', function(req, res) {
 });
 
 app.get('/subscriptions', function(req, res) {
+    if (!req.cookies.user) {
+        res.redirect('/user/signin');
+        return;
+    }
     request.get(api_url + '/sources', function(error, response, body) {
         var all_sources = JSON.parse(body);
         request.get({url: api_url + '/users/following', headers: {'user_id': JSON.parse(req.cookies.user).id}}, function(error, response, body) {
             var user_sources = JSON.parse(body);
             all_sources.forEach(all => {
+                all.following = 0;
                 user_sources.forEach(user => {
                     if(all.id === user.id) {
                         all.following = 1;
-                    } else {
-                        all.following = 0;
+                        return;
                     }
                 });
             });
             res.render('subscriptions', {all_sources});
         });
+    });
+});
+
+app.get('/follow/:sourceid', function(req, res) {
+    if (!req.cookies.user) {
+        res.redirect('/user/signin');
+        return;
+    }
+    headers = {
+        'user_id': JSON.parse(req.cookies.user).id,
+        'source_id': req.params.sourceid
+    }
+    request.get({url: api_url + '/users/follow', headers: headers}, function(error, response, body) {
+        res.redirect('/user/subscriptions');
+    });
+});
+
+app.get('/unfollow/:sourceid', function(req, res) {
+    if (!req.cookies.user) {
+        res.redirect('/user/signin');
+        return;
+    }
+    headers = {
+        'user_id': JSON.parse(req.cookies.user).id,
+        'source_id': req.params.sourceid
+    }
+    request.get({url: api_url + '/users/unfollow', headers: headers}, function(error, response, body) {
+        res.redirect('/user/subscriptions');
     });
 });
 
