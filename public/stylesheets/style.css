@@ -1,272 +1,764 @@
-/*
- * -- BASE STYLES --
- * Most of these are inherited from Base, but I want to change a few.
- */
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary {
+	display:block
+}
+audio,canvas,video {
+	display:inline-block
+}
+audio:not([controls]) {
+	display:none;
+	height:0
+}
+[hidden] {
+	display:none
+}
+html {
+	font-family:sans-serif;
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%
+}
 body {
-    color: #333;
+	margin:0
 }
-
-a {
-    text-decoration: none;
-    color: #1b98f8;
+a:focus {
+	outline:thin dotted
 }
-
-.signin {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #f5f5f5;
-    text-align: center;
+a:active,a:hover {
+	outline:0
 }
-.signin_form {
-    margin: auto;
+h1 {
+	font-size:2em;
+	margin:0.67em 0
 }
-
-/*
- * -- HELPER STYLES --
- * Over-riding some of the .pure-button styles to make my buttons look unique
- */
-.primary-button,
-.secondary-button {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border-radius: 20px;
+abbr[title] {
+	border-bottom:1px dotted
 }
-.primary-button {
-    color: #fff;
-    background: #1b98f8;
-    margin: 1em 0;
+b,strong {
+	font-weight:bold
 }
-.secondary-button {
-    background: #fff;
-    border: 1px solid #ddd;
-    color: #666;
-    padding: 0.5em 2em;
-    font-size: 80%;
+dfn {
+	font-style:italic
 }
-
-/*
- * -- LAYOUT STYLES --
- * This layout consists of three main elements, `#nav` (navigation bar), `#list` (rss list), and `#main` (rss content). All 3 elements are within `#layout`
- */
-#layout, #nav, #list, #main {
-    margin: 0;
-    padding: 0;
+hr {
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+	height:0
 }
-
-/* Make the navigation 100% width on phones */
-#nav {
-    width: 100%;
-    height: 40px;
-    position: relative;
-    background: rgb(37, 42, 58);
-    text-align: center;
+mark {
+	background:#ff0;
+	color:#000
 }
-/* Show the "Menu" button on phones */
-#nav .nav-menu-button {
-    display: block;
-    top: 0.5em;
-    right: 0.5em;
-    position: absolute;
+code,kbd,pre,samp {
+	font-family:monospace,serif;
+	font-size:1em
 }
-
-/* When "Menu" is clicked, the navbar should be 80% height */
-#nav.active {
-    height: 80%;
+pre {
+	white-space:pre-wrap
 }
-/* Don't show the navigation items... */
-.nav-inner {
-    display: none;
+q {
+	quotes:"\201C" "\201D" "\2018" "\2019"
 }
-
-/* ...until the "Menu" button is clicked */
-#nav.active .nav-inner {
-    display: block;
-    padding: 2em 0;
+small {
+	font-size:80%
 }
-
-
-/*
- * -- NAV BAR STYLES --
- * Styling the default .pure-menu to look a little more unique.
- */
-#nav .pure-menu {
-    background: transparent;
-    border: none;
-    text-align: left;
+sub,sup {
+	font-size:75%;
+	line-height:0;
+	position:relative;
+	vertical-align:baseline
 }
-    #nav .pure-menu-link:hover,
-    #nav .pure-menu-link:focus {
-        background: rgb(55, 60, 90);
-    }
-    #nav .pure-menu-link {
-        color: #fff;
-        margin-left: 0.5em;
-    }
-    #nav .pure-menu-heading {
-        border-bottom: none;
-        font-size:110%;
-        color: rgb(75, 113, 151);
-    }
-
-
-/*
- * -- RSS STYLES --
- * Styles relevant to the rss messages, labels, counts, and more.
- */
-.rss-count {
-    color: rgb(75, 113, 151);
+sup {
+	top:-0.5em
 }
-.rss-label {
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    margin-right: 0.5em;
-    border-radius: 3px;
-    background: #ffc94c;
+sub {
+	bottom:-0.25em
 }
-
-/* RSS Item Styles */
-.rss-item {
-    padding: 0.9em 1em;
-    border-bottom: 1px solid #ddd;
-    border-left: 6px solid transparent;
+img {
+	border:0
 }
-    .rss-avatar {
-        border-radius: 3px;
-        margin-right: 0.5em;
-    }
-    .rss-name,
-    .rss-title {
-        margin: 0;
-    }
-    .rss-name {
-        text-transform: uppercase;
-        color: #999;
-    }
-    .rss-desc {
-        font-size: 80%;
-        margin: 0.4em 0;
-    }
-
-.rss-item-selected {
-    background: #eee;
+svg:not(:root) {
+	overflow:hidden
 }
-.rss-item-unread {
-    border-left: 6px solid #1b98f8;
+figure {
+	margin:0
 }
-
-/* rss Content Styles */
-.rss-content-header, .rss-content-body, .rss-content-footer {
-    padding: 1em 2em;
+fieldset {
+	border:1px solid #c0c0c0;
+	margin:0 2px;
+	padding:0.35em 0.625em 0.75em
 }
-    .rss-content-header {
-        border-bottom: 1px solid #ddd;
-    }
-
-        .rss-content-title {
-            margin: 0.5em 0 0;
-        }
-        .rss-content-subtitle {
-            font-size: 1em;
-            margin: 0;
-            font-weight: normal;
-        }
-            .rss-content-subtitle span {
-                color: #999;
-            }
-    .rss-content-controls {
-        margin-top: 2em;
-        text-align: right;
-    }
-        .rss-content-controls .secondary-button {
-            margin-bottom: 0.3em;
-        }
-
-    .rss-avatar {
-        width: 40px;
-        height: 40px;
-    }
-
-/*
- * -- TABLET (AND UP) MEDIA QUERIES --
- * On tablets and other medium-sized devices, we want to customize some
- * of the mobile styles.
- */
-@media (min-width: 40em) {
-
-    /* Move the layout over so we can fit the nav + list in on the left */
-    #layout {
-        padding-left:500px; /* "left col (nav + list)" width */
-        position: relative;
-    }
-
-    /* These are position:fixed; elements that will be in the left 500px of the screen */
-    #nav, #list {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        overflow: auto;
-    }
-    #nav {
-        margin-left:-500px; /* "left col (nav + list)" width */
-        width:150px;
-        height: 100%;
-    }
-
-    /* Show the menu items on the larger screen */
-    .nav-inner {
-        display: block;
-        padding: 2em 0;
-    }
-
-    /* Hide the "Menu" button on larger screens */
-    #nav .nav-menu-button {
-        display: none;
-    }
-
-    #list {
-        margin-left: -350px;
-        width: 100%;
-        height: 33%;
-        border-bottom: 1px solid #ddd;
-    }
-
-    #main {
-        position: fixed;
-        top: 33%;
-        right: 0;
-        bottom: 0;
-        left: 150px;
-        overflow: auto;
-        width: auto; /* so that it's not 100% */
-    }
-
+legend {
+	border:0;
+	padding:0
 }
-
-/*
- * -- DESKTOP (AND UP) MEDIA QUERIES --
- * On desktops and other large-sized devices, we want to customize some
- * of the mobile styles.
- */
-@media (min-width: 60em) {
-
-    /* This will take up the entire height, and be a little thinner */
-    #list {
-        margin-left: -350px;
-        width:350px;
-        height: 100%;
-        border-right: 1px solid #ddd;
-    }
-
-    /* This will now take up it's own column, so don't need position: fixed; */
-    #main {
-        position: static;
-        margin: 0;
-        padding: 0;
-    }
+form {
+	text-align:center;
+}
+div .page-item {
+    margin-top:15px;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	overflow:scroll;
+	max-height:300px;
+}
+div .article-item {
+    margin-top:15px;
+	border-bottom:1px solid rgba(0,0,0,0.1);
+	overflow:scroll;
+	max-height:600px;
+}
+div#submit {
+	margin:10px;
+	text-align:center;
+}
+.input {
+	padding:10px;
+}
+input {
+	border:0;
+	border-radius:4px;
+	outline:0;
+	background:rgba(0,0,0,.064);
+	padding:8px 6px;
+	font-size:18px;
+	line-height:1;
+	box-sizing:border-box;
+	width:300px;
+	margin-right:4px;
+}
+label {
+	display:block;
+	padding-bottom:5px;
+}
+textarea {
+    border:0;
+	border-radius:4px;
+	outline:0;
+	background:rgba(0,0,0,.064);
+    padding:5px;
+    width:98%;
+}
+button {
+	border:0;
+	background-color:#FFF;
+	text-decoration:underline;
+}
+button,input,select,textarea {
+	font-family:inherit;
+	font-size:100%;
+	margin:0
+}
+button,input {
+	line-height:normal
+}
+button,select {
+	text-transform:none
+}
+button,html input[type="button"],input[type="reset"],input[type="submit"] {
+	-webkit-appearance:button;
+	cursor:pointer
+}
+button[type="submit"] {
+	border:0;
+	background-color:#FFF;
+	text-decoration:underline;
+}
+button[disabled],html input[disabled] {
+	cursor:default
+}
+input[type="checkbox"],input[type="radio"] {
+	box-sizing:border-box;
+	padding:0
+}
+input[type="search"] {
+	-webkit-appearance:textfield;
+	-moz-box-sizing:content-box;
+	-webkit-box-sizing:content-box;
+	box-sizing:content-box
+}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance:none
+}
+button::-moz-focus-inner,input::-moz-focus-inner {
+	border:0;
+	padding:0
+}
+textarea {
+	overflow:auto;
+	vertical-align:top
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0
+}
+.highlight .hll {
+	background-color:#ffc
+}
+.highlight .c {
+	color:#999988;
+	font-style:italic
+}
+.highlight .err {
+	color:#a61717;
+	background-color:#e3d2d2
+}
+.highlight .k {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .o {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .cm {
+	color:#999988;
+	font-style:italic
+}
+.highlight .cp {
+	color:#999999;
+	font-weight:bold;
+	font-style:italic
+}
+.highlight .c1 {
+	color:#999988;
+	font-style:italic
+}
+.highlight .cs {
+	color:#999999;
+	font-weight:bold;
+	font-style:italic
+}
+.highlight .gd {
+	color:#000000;
+	background-color:#fdd
+}
+.highlight .ge {
+	color:#000000;
+	font-style:italic
+}
+.highlight .gr {
+	color:#a00
+}
+.highlight .gh {
+	color:#999
+}
+.highlight .gi {
+	color:#000000;
+	background-color:#dfd
+}
+.highlight .go {
+	color:#888
+}
+.highlight .gp {
+	color:#555
+}
+.highlight .gs {
+	font-weight:bold
+}
+.highlight .gu {
+	color:#aaa
+}
+.highlight .gt {
+	color:#a00
+}
+.highlight .kc {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .kd {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .kn {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .kp {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .kr {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .kt {
+	color:#445588;
+	font-weight:bold
+}
+.highlight .m {
+	color:#099
+}
+.highlight .s {
+	color:#d01040
+}
+.highlight .na {
+	color:teal
+}
+.highlight .nb {
+	color:#0086b3
+}
+.highlight .nc {
+	color:#445588;
+	font-weight:bold
+}
+.highlight .no {
+	color:teal
+}
+.highlight .nd {
+	color:#3c5d5d;
+	font-weight:bold
+}
+.highlight .ni {
+	color:purple
+}
+.highlight .ne {
+	color:#990000;
+	font-weight:bold
+}
+.highlight .nf {
+	color:#990000;
+	font-weight:bold
+}
+.highlight .nl {
+	color:#990000;
+	font-weight:bold
+}
+.highlight .nn {
+	color:#555
+}
+.highlight .nt {
+	color:navy
+}
+.highlight .nv {
+	color:teal
+}
+.highlight .ow {
+	color:#000000;
+	font-weight:bold
+}
+.highlight .w {
+	color:#bbb
+}
+.highlight .mf {
+	color:#099
+}
+.highlight .mh {
+	color:#099
+}
+.highlight .mi {
+	color:#099
+}
+.highlight .mo {
+	color:#099
+}
+.highlight .sb {
+	color:#d01040
+}
+.highlight .sc {
+	color:#d01040
+}
+.highlight .sd {
+	color:#d01040
+}
+.highlight .s2 {
+	color:#d01040
+}
+.highlight .se {
+	color:#d01040
+}
+.highlight .sh {
+	color:#d01040
+}
+.highlight .si {
+	color:#d01040
+}
+.highlight .sx {
+	color:#d01040
+}
+.highlight .sr {
+	color:#009926
+}
+.highlight .s1 {
+	color:#d01040
+}
+.highlight .ss {
+	color:#990073
+}
+.highlight .bp {
+	color:#999
+}
+.highlight .vc {
+	color:teal
+}
+.highlight .vg {
+	color:teal
+}
+.highlight .vi {
+	color:teal
+}
+.highlight .il {
+	color:#099
+}
+#wrapper {
+	width:720px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:20px;
+	padding-left:10px;
+	padding-right:10px
+}
+@media only screen and (max-width:768px) {
+	#wrapper {
+	width:auto
+}
+}#header {
+	padding-bottom:20px
+}
+@media only screen and (min-width:1200px) {
+	#header {
+	opacity:0.7
+}
+#header a:hover {
+	opacity:1;
+	color:#223
+}
+}#header #site_name {
+	text-decoration:none;
+	font-size:1.3em
+}
+@media only screen and (max-width:1200px) {
+	#header #site_name {
+	display:block;
+	text-align:center;
+	font-size:2em;
+	color:#111
+}
+}#header nav {
+	text-align:center;
+	display:block;
+	float:none;
+	border-top:1px solid rgba(0,0,0,0.1);
+	border-bottom:1px solid rgba(0,0,0,0.1)
+}
+#header nav a {
+	padding-right:10px
+}
+#header nav a:last-child {
+	padding-right:0
+}
+@media only screen and (min-width:1200px) {
+	#header nav {
+	display:inline;
+	float:right;
+	border-top:none;
+	border-bottom:none
+}
+}#content .date {
+	font-style:italic;
+	color:gray
+}
+#content ol#posts {
+	list-style-type:none
+}
+#content ol#posts li {
+	padding-top:5px;
+	padding-bottom:5px
+}
+#content ol#posts li a {
+	padding-left:5px
+}
+#content ol#posts li .date {
+	font-size:0.8em
+}
+#content #pagination {
+	font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-align:center
+}
+#content #pagination #prev {
+	float:left
+}
+#content #pagination #next {
+	float:right
+}
+#content .post h1#title {
+	text-align:center
+}
+#content .post>.date {
+	text-align:center
+}
+#content .post article {
+	padding-top:30px;
+	border-top:1px solid rgba(0,0,0,0.1)
+}
+#content .post article p img {
+    display:block;
+    margin:auto;
+}
+#content .post .tags {
+	display:inline;
+	color:gray;
+	font-style:italic;
+	font-size:0.9em
+}
+#content .post .tags a {
+	color:gray
+}
+#content .post .operation {
+	color:gray;
+	float:right;
+	font-style:italic;
+	font-size:0.9em
+}
+#content .post .operation a {
+	color:gray
+}
+#footer {
+	color:gray;
+	font-size:0.8em;
+	text-align:center;
+	margin-top:20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	border-top:1px solid rgba(0,0,0,0.1)
+}
+#footer a {
+	color:gray
+}
+.yue {
+	font:400 18px/1.62 "Georgia","Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei",sans-serif;
+	color:#444443;
+}
+.windows .yue {
+	font-size:16px;
+	font-family:"Georgia","SimSun",sans-serif;
+}
+.yue::-moz-selection {
+	background-color:rgba(0,0,0,0.2);
+}
+.yue::selection {
+	background-color:rgba(0,0,0,0.2);
+}
+.yue h1,.yue h2,.yue h3,.yue h4,.yue h5,.yue h6 {
+	font-family:"Georgia","Xin Gothic","Hiragino Sans GB","Droid Sans Fallback","Microsoft YaHei","SimSun",sans-serif;
+	color:#222223;
+}
+.yue h1 {
+	font-size:1.8em;
+	margin:0.67em 0;
+}
+.yue > h1 {
+	margin-top:0;
+	font-size:2em;
+}
+.yue h2 {
+	font-size:1.5em;
+	margin:0.83em 0;
+}
+.yue h3 {
+	font-size:1.17em;
+	margin:1em 0;
+}
+.yue h4,.yue h5,.yue h6 {
+	font-size:1em;
+	margin:1.6em 0 1em 0;
+}
+.yue h6 {
+	font-weight:500;
+}
+.yue p {
+	margin-top:0;
+	margin-bottom:1.46em;
+}
+.yue a {
+	color:#111;
+	word-wrap:break-word;
+	-moz-text-decoration-color:rgba(0,0,0,0.4);
+	text-decoration-color:rgba(0,0,0,0.4);
+}
+.yue a:hover {
+	color:#555;
+	-moz-text-decoration-color:rgba(0,0,0,0.6);
+	text-decoration-color:rgba(0,0,0,0.6);
+}
+.yue strong,.yue b {
+	font-weight:700;
+	color:#222;
+}
+.yue em,.yue i {
+	font-style:italic;
+	color:#222;
+}
+.yue img {
+	max-width:100%;
+	height:auto;
+	margin:0.2em 0;
+}
+.yue a img {
+	/* Remove border on IE */
+  border:none;
+}
+.yue figure {
+	position:relative;
+	clear:both;
+	outline:0;
+	margin:10px 0 30px;
+	padding:0;
+	min-height:100px;
+}
+.yue figure img {
+	display:block;
+	max-width:100%;
+	margin:auto auto 4px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.yue figure figcaption {
+	position:relative;
+	width:100%;
+	text-align:center;
+	left:0;
+	margin-top:10px;
+	font-weight:400;
+	font-size:14px;
+	color:#666665;
+}
+.yue figure figcaption a {
+	text-decoration:none;
+	color:#666665;
+}
+.yue hr {
+	display:block;
+	width:14%;
+	margin:40px auto 34px;
+	border:0 none;
+	border-top:3px solid #dededc;
+}
+.yue blockquote {
+	margin:0 0 1.64em 0;
+	border-left:3px solid #dadada;
+	padding-left:12px;
+	color:#666664;
+}
+.yue blockquote a {
+	color:#666664;
+}
+.yue ul,.yue ol {
+	margin:0 0 24px 6px;
+	padding-left:16px;
+}
+.yue ul {
+	list-style-type:square;
+}
+.yue ol {
+	list-style-type:decimal;
+}
+.yue li {
+	margin-bottom:0.2em;
+}
+.yue li ul,.yue li ol {
+	margin-top:0;
+	margin-bottom:0;
+	margin-left:14px;
+}
+.yue li ul {
+	list-style-type:disc;
+}
+.yue li ul ul {
+	list-style-type:circle;
+}
+.yue li p {
+	margin:0.4em 0 0.6em;
+}
+.yue .unstyled {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+.yue code,.yue tt {
+	color:#808080;
+	font-size:0.96em;
+	background-color:#f9f9f7;
+	padding:1px 2px;
+	border:1px solid #dadada;
+	border-radius:3px;
+	font-family:"Inconsolata","Menlo",monospace;
+}
+.yue pre {
+	margin:1.64em 0;
+	padding:7px;
+	border:none;
+	border-left:3px solid #dadada;
+	padding-left:10px;
+	overflow:auto;
+	line-height:1.5;
+	font-size:0.96em;
+	font-family:Menlo,Monaco,Consolas,"Courier New",monospace;
+	color:#4c4c4c;
+	background-color:#f9f9f7;
+}
+.yue pre code,.yue pre tt {
+	color:#4c4c4c;
+	border:none;
+	background:none;
+	padding:0;
+}
+.yue table {
+	width:100%;
+	border-collapse:collapse;
+	border-spacing:0;
+	margin-bottom:1.5em;
+	font-size:0.96em;
+}
+.yue th,.yue td {
+	text-align:left;
+	padding:4px 8px 4px 10px;
+	border:1px solid #dadada;
+}
+.yue td {
+	vertical-align:top;
+}
+.yue tr:nth-child(even) {
+	background-color:#efefee;
+}
+.yue iframe {
+	display:block;
+	max-width:100%;
+	margin-bottom:30px;
+}
+.yue figure iframe {
+	margin:auto;
+}
+.yue table pre {
+	margin:0;
+	padding:0;
+	border:none;
+	background:none;
+}
+@media (min-width:1100px) {
+	.yue blockquote {
+	margin-left:-24px;
+	padding-left:20px;
+	border-width:4px;
+}
+.yue blockquote blockquote {
+	margin-left:0;
+}
+.yue figure img {
+	margin:0 0 4px;
+}
+.yue figure figcaption:before {
+	width:25%;
+	margin-left:75%;
+	border-top:1px solid #dededc;
+	display:block;
+	content:"";
+	margin-bottom:10px;
+}
+.yue figure figcaption {
+	position:absolute;
+	left:-172px;
+	width:150px;
+	top:0;
+	text-align:right;
+	margin-top:0;
+}
 }
