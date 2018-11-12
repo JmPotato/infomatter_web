@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
     if (req.cookies.user) {
         request.get({url: api_url + '/users/timeline', headers: {'user_id': JSON.parse(req.cookies.user).id}}, function(error, response, body) {
             var entries = JSON.parse(body);
-            res.render('index', {entries});
+            res.render('home', {entries});
         });
     } else {
         res.redirect('/user/signin');
