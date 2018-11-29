@@ -7,7 +7,7 @@ var config = require('../config.js');
 var api_url = config.api_url;
 
 app.get('/signup', function(req, res) {
-    res.render('signup');
+    res.render('signup', {page_title: "注册"});
 });
 
 app.post('/signup', function(req, res) {
@@ -28,7 +28,7 @@ app.post('/signup', function(req, res) {
 });
 
 app.get('/signin', function(req, res) {
-    res.render('signin');
+    res.render('signin', {page_title: "登录"});
 });
 
 app.post('/signin', function(req, res) {
@@ -67,7 +67,7 @@ app.get('/subscriptions', function(req, res) {
                     }
                 });
             });
-            res.render('subscriptions', {all_sources});
+            res.render('subscriptions', {page_title: "订阅", all_sources});
         });
     });
 });

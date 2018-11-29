@@ -8,8 +8,12 @@ var api_url = config.api_url;
 app.get('/', function(req, res) {
     if (req.cookies.user) {
         request.get({url: api_url + '/users/timeline', headers: {'user_id': JSON.parse(req.cookies.user).id}}, function(error, response, body) {
+            if (body === '[]') {
+                res.redirect('/user/signout');
+                return;
+            }
             var entries = JSON.parse(body);
-            res.render('home', {entries});
+            res.render('timeline', {page_title: "首页", entries});
         });
     } else {
         res.redirect('/user/signin');
