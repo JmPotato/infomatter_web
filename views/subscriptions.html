@@ -4,7 +4,7 @@
 <body>
     <div id="wrapper" class="yue">
         <header id="header">
-            <a href="/" id="site_name">Infomatter</a>
+            <a href="/" id="site_name">Infomatter </a>| <%= page_title %>
             <nav>
                 <a href="/user/subscriptions">订阅</a>
                 <a href="/user/signout">注销</a>
@@ -14,7 +14,7 @@
             <ol id="posts">
                 <% all_sources.forEach(item => { %>
                     <li>
-                        <% if(item.following) { %><span><a href="/user/unfollow/<%= item.id %>">-</a></span><% } else { %><span><a href="/user/follow/<%= item.id %>">+</a></span><% } %> <a href="<%= item.link %>" target="_blank"><%= item.name %></a>
+                        <% if(item.following) { %><span><a href="/user/unfollow/<%= item.id %>">-</a></span><% } else { %><span><a href="/user/follow/<%= item.id %>">+</a></span><% } %> <a href="/source/<%= item.id %>/timeline" target="_self"><%= item.name %></a>
                     </li>
                 <% }) %>
             </ol>

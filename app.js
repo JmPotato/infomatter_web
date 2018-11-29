@@ -17,9 +17,11 @@ app.engine('html', require('ejs').renderFile);
 
 var home = require('./routes/home.js');
 var user = require('./routes/user.js');
+var source = require('./routes/source.js');
 
 app.use('/', home);
 app.use('/user', user);
+app.use('/source', source);
 
 var server = app.listen(server_port, function () {
     var host = server.address().address;
