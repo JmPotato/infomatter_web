@@ -11,7 +11,7 @@ app.get('/signup', function(req, res) {
 });
 
 app.post('/signup', function(req, res) {
-    if (req.body.password_1 !== req.body.password_2) {
+    if(req.body.password_1 !== req.body.password_2) {
         res.redirect('/user/signup')
     } else {
         var form = {
@@ -19,8 +19,15 @@ app.post('/signup', function(req, res) {
             password: req.body.password_1,
         };
         request.post({url: api_url + '/users/add', form: form}, function (error, response, body) {
-            if (body !== 'FAILURE') {
-                res.cookie('user', body, {maxAge:2678400000, path:'/', httpOnly:true})
+            if(body !== 'FAILURE') {
+                res.cookie('user', body, {maxAge:2678400000, path:'/', httpOnly:true});
+                headers = {
+                    'user_id': JSON.parse(body).id,
+                    'source_id': 1
+                }
+                request.get({url: api_url + '/users/follow', headers: headers}, function(error, response, body) {
+                    return;
+                });
             }
             res.redirect('/');
         });
@@ -37,7 +44,7 @@ app.post('/signin', function(req, res) {
         password: req.body.password,
     };
     request.post({url: api_url + '/users/check', form: form}, function (error, response, body) {
-        if (body !== 'NOTFOUND') {
+        if(body !== 'NOTFOUND') {
             res.cookie('user', body, {maxAge:2678400000, path:'/', httpOnly:true})
         }
         res.redirect('/');
@@ -50,7 +57,7 @@ app.get('/signout', function(req, res) {
 });
 
 app.get('/subscriptions', function(req, res) {
-    if (!req.cookies.user) {
+    if(!req.cookies.user) {
         res.redirect('/user/signin');
         return;
     }
@@ -72,8 +79,20 @@ app.get('/subscriptions', function(req, res) {
     });
 });
 
+app.post('/search', function(req, res) {
+    feed_url = req.body.feed_url;
+    link_url = 
+    request.get(api_url + '/sources/search?link=' + req.body.feed_url, function(error, response, body) {
+        if(body==='NOTFOUND') {
+            //
+        } else {
+            //
+        }
+    });
+});
+
 app.get('/follow/:sourceid', function(req, res) {
-    if (!req.cookies.user) {
+    if(!req.cookies.user) {
         res.redirect('/user/signin');
         return;
     }
@@ -87,7 +106,7 @@ app.get('/follow/:sourceid', function(req, res) {
 });
 
 app.get('/unfollow/:sourceid', function(req, res) {
-    if (!req.cookies.user) {
+    if(!req.cookies.user) {
         res.redirect('/user/signin');
         return;
     }
