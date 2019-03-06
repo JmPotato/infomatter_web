@@ -22,7 +22,6 @@ app.post('/signup', function(req, res) {
         };
         request.post({url: api_url + '/users/add', form: form}, function (error, response, body) {
             if(body !== 'FAILURE' && body !== 'EXISTED') {
-                console.log(body);
                 res.cookie('user', body, {maxAge:2678400000, path:'/', httpOnly:true});
             }
             res.redirect('/');
@@ -42,7 +41,6 @@ app.post('/signin', function(req, res) {
     };
     request.post({url: api_url + '/users/check', form: form}, function (error, response, body) {
         if(body !== 'NOTFOUND') {
-            console.log(body);
             res.cookie('user', body, {maxAge:2678400000, path:'/', httpOnly:true})
         }
         res.redirect('/');
