@@ -1,5 +1,6 @@
 var request = require('request');
 var express = require('express');
+var crypto = require('crypto');
 
 var app = express();
 
@@ -14,20 +15,15 @@ app.post('/signup', function(req, res) {
     if(req.body.password_1 !== req.body.password_2) {
         res.redirect('/user/signup')
     } else {
+        var md5 = crypto.createHash('md5');
         var form = {
             name: req.body.name,
-            password: req.body.password_1,
+            password: md5.update(req.body.password_1).digest('hex')
         };
         request.post({url: api_url + '/users/add', form: form}, function (error, response, body) {
-            if(body !== 'FAILURE') {
+            if(body !== 'FAILURE' && body !== 'EXISTED') {
+                console.log(body);
                 res.cookie('user', body, {maxAge:2678400000, path:'/', httpOnly:true});
-                headers = {
-                    'user_id': JSON.parse(body).id,
-                    'source_id': 1
-                }
-                request.get({url: api_url + '/users/follow', headers: headers}, function(error, response, body) {
-                    return;
-                });
             }
             res.redirect('/');
         });
@@ -39,12 +35,14 @@ app.get('/signin', function(req, res) {
 });
 
 app.post('/signin', function(req, res) {
+    var md5 = crypto.createHash('md5');
     var form = {
         name: req.body.name,
-        password: req.body.password,
+        password: md5.update(req.body.password).digest('hex')
     };
     request.post({url: api_url + '/users/check', form: form}, function (error, response, body) {
         if(body !== 'NOTFOUND') {
+            console.log(body);
             res.cookie('user', body, {maxAge:2678400000, path:'/', httpOnly:true})
         }
         res.redirect('/');
