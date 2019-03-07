@@ -15,6 +15,7 @@
                     <li>
                         <a href="<%= item.link %>" target="_blank"><%= item.title %></a>
                     </li>
+                    <li style="text-align:left"><span class="digest"><%= item.digest %></span></li>
                     <li style="text-align:right"><span class="date">
                         <%= item.source_name %>
                         <% var rel_time = Date.now() - Date.parse(item.time) %>
