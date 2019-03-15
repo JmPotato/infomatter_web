@@ -470,7 +470,8 @@ table {
 }
 #content ol#posts li .digest {
 	color:gray;
-	font-size:1em
+	font-size:1em;
+	word-break:break-all;
 }
 #content #pagination {
 	font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;
